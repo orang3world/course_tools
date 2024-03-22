@@ -25,7 +25,7 @@ with open(f"rec_{dte}.txt", "w") as f:
     f.write("00:00:00 Inicio de la clase\n")
 
 
-# while
+# while (infinity loop)
 while True:
     with open(f"rec_{dte}.txt", "a") as f:
         # note or exit
