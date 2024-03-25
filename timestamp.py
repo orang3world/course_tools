@@ -26,7 +26,7 @@ pauseDelta = NULL
 screenClean()
 
 # creation of a file and writing first lines
-with open(f"rec_{dte}.txt", "a") as f:
+with open(f"rec_{dte}.txt", "a+") as f:
     f.write(f'Recording date: {start_time.strftime("%Y-%m-%d %H:%M:%S")}\n\n')
     f.write("00:00:00 Inicio de la clase\n")
     
@@ -39,10 +39,10 @@ while True:
         file creation or write a line if file exist
         file's name has format: 'rec_yyyymmdd.txt\' 
     '''
-    with open(f"rec_{dte}.txt", "a") as f:
+    with open(f"rec_{dte}.txt", "a+") as f:
         
         # note or exit           
-        note = input("Write your note (e for exit):\n")
+        note = input("Write your section's name ('e' for exit or 'p' for pause):\n")
         lap = datetime.now()
         delta = lap - start_time
         lastTime = origen_time + delta
@@ -61,6 +61,10 @@ while True:
         # exit option
         if note == "e" or note == "E":
             f.write(f'\nThe file\'s path is: {BASE_DIR}/rec_{dte}.txt')
+            f.seek(0)
+            content = f.read()
+            screenClean()
+            print(content)
             break
         
         # pause option
@@ -75,7 +79,8 @@ while True:
             f.write(newLine)
             
     # clear the screen and show the file content for each  of the iterations
-    with open(f"rec_{dte}.txt", "r") as f:
+    #with open(f"rec_{dte}.txt", "r") as f:
+        f.seek(0)
         content = f.read()
         screenClean()
         print(content)
