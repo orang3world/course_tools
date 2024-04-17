@@ -1,0 +1,15 @@
+Recording date: 2024-04-16 21:50:05
+
+00:00:00 Inicio de la clase
+00:00:01 hola
+00:00:55 u
+00:00:59 u
+00:01:05 i
+00:01:13 
+00:01:14 
+00:01:20 
+00:01:20 
+00:01:22 
+00:01:24 
+
+The file's path is: /home/ariel/PYTHON/myProyects/time/rec_20240416.txt
