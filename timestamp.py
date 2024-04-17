@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import os
 from pathlib import Path
+from textwrap import indent
 from zmq import NULL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,6 +22,22 @@ start_time = datetime.now()
 origen_time = datetime(1, 1, 1, 0, 0, 0)
 dte = start_time.strftime("%Y%m%d")
 pauseDelta = NULL
+tabla_speed = {
+    "a": 1,
+    "b": 1.25,
+    "c": 1.5,
+    "d": 2,
+}
+while True:
+    spSelection = input(
+        "a) speed 1x\nb) speed 1.25x\nc) speed 1.5x\nd) speed 2x\n\nSpeed video reproduction: "
+    )
+    if tabla_speed.get(spSelection):
+        speedVideo = tabla_speed[spSelection]
+        break
+    else:
+        screenClean()
+        print("speed not valid")
 
 screenClean()
 
@@ -41,11 +58,14 @@ while True:
     with open(f"rec_{dte}.txt", "a+") as f:
         # note or exit
         note = input("Write your section's name ('e' for exit or 'p' for pause):\n")
-        lap = datetime.now() - timedelta(seconds=10)
+        lap = datetime.now()
         delta = lap - start_time
-        lastTime = origen_time + delta
+        if delta > timedelta(seconds=10):
+            delta -= timedelta(seconds=10)
 
-        # after a pause
+        lastTime = origen_time + (delta * speedVideo)
+
+        # after a paused
         if pauseDelta != NULL:
             pauseTime = delta - pauseDelta
             start_time += pauseTime
