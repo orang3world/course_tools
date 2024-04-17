@@ -1,8 +1,0 @@
-Recording date: 2024-03-24 21:56:11
-
-00:00:00 Inicio de la clase
-00:00:05 saludos iniciales
-00:00:27 requisitos para aprobar
-00:00:30 Recording Paused... presentacion FCompromiso
-
-The file's path is: /home/ariel/PYTHON/myProyects/time/rec_20240324.txt
