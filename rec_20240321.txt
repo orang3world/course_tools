@@ -1,7 +1,0 @@
-Recording date: 2024-03-21 14:31:50
-
-00:00:00 Inicio de la clase
-00:00:03 nota 1
-00:00:06 nota 2
-00:00:09 nota 3
-00:00:13 nota 4
