@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 import os
 from pathlib import Path
-from zmq import NULL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -20,7 +19,7 @@ def screenClean():
 start_time = datetime.now()
 origen_time = datetime(1, 1, 1, 0, 0, 0)
 dte = start_time.strftime("%Y%m%d")
-pauseDelta = NULL
+pauseDelta = None
 
 screenClean()
 
@@ -41,16 +40,18 @@ while True:
     with open(f"rec_{dte}.txt", "a+") as f:
         # note or exit
         note = input("Write your section's name ('e' for exit or 'p' for pause):\n")
-        lap = datetime.now() - timedelta(seconds=10)
+        lap = datetime.now()
         delta = lap - start_time
+        if delta > timedelta(seconds=10):
+            delta -= timedelta(seconds=10)
         lastTime = origen_time + delta
 
         # after a pause
-        if pauseDelta != NULL:
+        if pauseDelta is not None:
             pauseTime = delta - pauseDelta
             start_time += pauseTime
             lastTime -= pauseTime
-            pauseDelta = NULL
+            pauseDelta = None
             newLine = f"{note}\n"
         # whitout pause
         else:
